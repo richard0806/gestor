@@ -1,0 +1,37 @@
+<?php
+sleep(3);
+
+//Llamado de los archivos clase
+require'../class/config.php';
+
+//realizamos la conexión a la base de datos
+$objCon = new Connection();
+$objCon->get_connected();
+
+      $buscar = $_POST['b'];
+       
+      if(!empty($buscar)) {
+            buscar($buscar);
+      }
+       
+      function buscar($b) {
+         //realizamos la conexión a la base de datos
+		
+       
+            $sql = mysql_query("SELECT * FROM consulta WHERE id_producto ='%$b%'",$con);
+											
+             
+            $contar = mysql_num_rows($sql);
+             
+            if($contar == 0){
+                  echo "<p class='danger'>No se han encontrado resultados para '<b>".$b."</b>'</p>";
+            }else{
+                  while($muestra=mysql_fetch_array($sql)){
+                        echo $muestra;
+						
+						   
+                  }
+            }
+      }
+       
+?>

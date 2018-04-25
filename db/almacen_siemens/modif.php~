@@ -1,0 +1,16 @@
+<?php
+require'class/config.php';
+require'class/dbactions.php';
+require'class/Pmenu.php';
+require'global/constants.php';
+
+$objcon = new Connection();
+$objcon->get_connected();
+
+	$query = "UPDATE cod_salida SET OtSalida = 'Gesman 27836' WHERE idCodSalida = '366'";
+		mysql_query($query);
+		if(mysql_affected_rows() > 0){
+			echo 'Registro  Actualizado';	
+		}else{
+			echo 'Error';
+		}

@@ -1,0 +1,263 @@
+.topbar {
+
+	padding:5px;
+	background: #fff ;
+	border:none;
+	border-radius: 0px;
+	box-shadow: 0 8px 5px -5px #1a4a72;
+}
+
+.topbar .navbar-header a {
+	color: #333;
+}
+.topbar .navbar-right>li>a {
+    color: #333;
+}
+.logo {
+    top: -16px;
+    left: 18px;
+    position: relative;
+    max-width: 77px;
+}
+.close-toggle{
+    text-align: center;
+}
+.navbar-right>li>a {
+    display: inline-block;
+    padding: 14px 3px;
+}
+
+/*Social*/
+.row-social{
+	position:fixed;
+	right:0;
+	top:10%;
+	background: #1a4a72;
+}
+.row-social .group-social{
+	padding:10px;
+}
+.row-social .group-social li{
+	list-style: none;
+	padding:5px;
+}
+
+.wrapper {
+    /*padding-left: 0px;*/
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sidebar {
+    z-index: 1500;
+    position: absolute;
+    top: 0px;
+    left: -50px;
+    width: 50px;
+    height: 100%;
+    background: #1a4a72;
+	color: #333;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.main {
+	width: 100%;
+    position: relative;
+    padding-bottom:20px;
+}
+
+.wrapper.toggled{
+	padding-left: 50px;
+}
+
+.wrapper.toggled .sidebar {
+	left: 0;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 2px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.sidebar-nav li {
+    line-height: 40px;
+    color: #fff;
+
+}
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 0;
+    text-align:center;
+    padding: 10px 0px 10px 0px;
+}
+
+ .sidebar-nav li.active a {
+    text-decoration: none;
+    color: #ea60c6;
+    background: #333;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav li span, .subbar li span {
+	display : none;
+}
+.img{
+    height: 100%;
+}
+
+nav.subbar {
+	position: relative;
+	width: 100%;
+	border-radius: 0px;
+	background: #fff;
+	margin: 50px 0 -50px 0;
+	padding: 10px 0 0 0;
+	z-index: 2;
+}
+nav.subbar > ul.nav.nav-tabs {
+	padding: 0 5px;
+}
+
+nav.subbar > ul.nav.nav-tabs > li.active > a {
+    background: #dedede;
+    border-top: 1px solid #a6a6a6;
+    border-left: 1px solid #a6a6a6;
+    border-right: 1px solid #a6a6a6;
+    border-radius: 0px;
+}
+
+.content {
+    margin-top: 70px;
+    padding: 0 30px;
+}
+
+@media(min-width:768px){
+	.subbar li span {
+		display: inline;
+	}
+	.col-sm-6{
+		width: auto;
+		padding-bottom: 8px;
+	}
+	.navbar-right>li {
+	    padding-left: 15px
+	}
+}
+
+@media(min-width:992px) {
+    .wrapper {
+    	padding-left: 50px;
+    }
+
+    .sidebar {
+    	left: 0;
+    	width: 5px;
+	}
+
+	.wrapper.toggled {
+		padding-left: 250px;
+	}
+
+	.wrapper.toggled .sidebar, .wrapper.toggled .sidebar-nav {
+		width: 200px;
+	}
+	
+	.wrapper.toggled .sidebar-nav li a {
+		/*text-align: left;*/
+		padding: 10px 0 10px 10px;
+	}
+
+	.wrapper.toggled .sidebar-nav li span {
+		display: inline;
+	}
+
+}
+
+/*SEARCH*/
+.form-search{
+    background: #1a4a72;
+    top: 60px;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    color: #fff;
+    display: none;
+}
+.form-search form h3{
+    display: inline-block;
+    padding-right: 10px;
+}
+.form-search .form-control {
+    display: inline-block;
+    border-radius:0;
+    margin-bottom: 10px;
+}
+a#StockExcel img{
+    width: 32px;
+    margin-top: -1em;
+    cursor:pointer;
+}
+.form-search input[type='text']{
+        width: 89.6%;
+}
+#form-search .form-group
+{
+    width: 88%;
+    margin-top: 10px;
+}
+.loading{
+    position: absolute;
+    background: rgba(24, 70, 107, 0.16);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1500;
+}
+.loading .load{
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    text-align: center;
+}
+/*SCROLL*/
+table.scroll {
+    width: 100%; /* Optional */
+    border-collapse: collapse;
+    border-spacing: 0;
+    /*border: 2px solid black;*/
+}
+
+table.scroll tbody,
+table.scroll thead { display: inline-block; }
+
+table.scroll thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /*text-align: left;*/
+}
+
+table.scroll tbody {
+    text-align: center;
+    width: 100%;
+    height: 450px;
+    overflow-y: auto;
+    overflow: overlay;
+    overflow-x: hidden;
+}
