@@ -1,6 +1,6 @@
 <?php
 /*
- Ejemplo 1 generando excel desde mysql con PHP
+  Generando excel desde mysql con PHP
     @Autor: Richard Valenzuela ~ RM soluciones WEB
  */
 
@@ -10,17 +10,20 @@ switch ($at) {
     case 1:
       $nameAt = 'CAT';
       break;
-       case 2:
+    case 2:
       $nameAt = 'SEN';
       break;
-       case 3:
+    case 3:
       $nameAt = 'ELE';
+      break;
+    case 4:
+      $nameAt = 'ALL';
       break;
  }
 
 
 if (PHP_SAPI == 'cli')
-  die('Este ejemplo sólo se puede ejecutar desde un navegador Web');
+  die('Este Scripts sólo se puede ejecutar desde un navegador Web');
 
 /** Incluye PHPExcel */
 require_once dirname(__FILE__) . '/PHPExcel/Classes/PHPExcel.php';
@@ -37,8 +40,8 @@ $objPHPExcel->getProperties()->setCreator("RM Soluciones Web")
                ->setCategory("Archivo de Reporte de Stocks");
 
    // Combino las celdas desde A1 hasta E1
-    $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:J1');  
-    $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A2:J2');   
+    $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A1:H1');
+    $objPHPExcel->setActiveSheetIndex(0)->mergeCells('A2:H2');
 
     $objPHPExcel->setActiveSheetIndex(0)
               ->setCellValue('A1', 'REPORTE DE STOCK ACTUAL '.$nameAt)
@@ -51,17 +54,17 @@ $objPHPExcel->getProperties()->setCreator("RM Soluciones Web")
               ->setCellValue('F3', "ID")
               ->setCellValue('G3', "MEDIDA")
               ->setCellValue('H3', "STOCK.");
-      
+
 // Fuente de la primera fila en negrita
     $boldArray = array('font' => array('bold' => true,),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
     $objPHPExcel->getActiveSheet()->getStyle('A1:H3')->applyFromArray($boldArray);
 
     //Ancho de las columnas
-    $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(5); 
-    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(8);  
-    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(80);  
-    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(35);  
+    $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(8);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(80);
+    $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth(35);
     $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
     $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(20);
     $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth(8);
@@ -70,7 +73,7 @@ $objPHPExcel->getProperties()->setCreator("RM Soluciones Web")
 /*Extraer datos de MYSQL*/
   require '../class/config.php';
   require '../class/dbactions.php';
-  require'../global/constants.php';
+  require '../global/constants.php';
   require '../class/productos.php';
 
   $objcon = new Connection();
@@ -78,8 +81,9 @@ $objPHPExcel->getProperties()->setCreator("RM Soluciones Web")
 
   $objProd = new Productos();
 
-  
+
   $listado = $objProd->crit_list_prod($con,1,$at);
+
   $cel=4;//Numero de fila donde empezara a crear  el reporte
   $items = 0;
   while($row=mysqli_fetch_array($listado)){
@@ -92,17 +96,29 @@ $objPHPExcel->getProperties()->setCreator("RM Soluciones Web")
       $f="F".$cel;
       $g="G".$cel;
       $h="H".$cel;
+      //asignamos los nombres a las areas
+      switch ($row['id_at']) {
+          case 1:
+            $name_At = 'CAT';
+            break;
+          case 2:
+            $name_At = 'SEN';
+            break;
+          case 3:
+            $name_At = 'ELE';
+            break;
+       }
       // Agregar datos
       $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue($a, $items)
-                            ->setCellValue($b, $nameAt)
+                            ->setCellValue($b, $name_At)
                             ->setCellValue($c, $row['designacion'])
                             ->setCellValue($d, $row['ref'])
                             ->setCellValue($e, $row['SAP'])
                             ->setCellValue($f, $row['id_prod'].'  ('.$row['id_opret'].')')
                             ->setCellValue($g, $row['medida'])
                             ->setCellValue($h, $row['cantidad']);
-      
+
   $cel+=1;
   }
 date_default_timezone_set("America/Santo_Domingo");
@@ -112,13 +128,13 @@ $nameRep = 'Reporte de Stock '.$nameAt;
 
 $ireport = "INSERT INTO tbl_sreport VALUES ('', '{$nameRep}', '{$namePC}', '{$now}')";
 $ins = $con->query($ireport);
-$res = ($con->affected_rows > 0)? 'YES' : 'NOT'; 
+$res = ($con->affected_rows > 0)? 'YES' : 'NOT';
 
 //$ins->close();
 $con->close();
 /*Fin extracion de datos MYSQL*/
 
-$rango="A3:$h";
+$rango="A3:".$h;
 $styleArray = array('font' => array( 'name' => 'Arial','size' => 10),
 'borders'=>array('allborders'=>array('style'=> PHPExcel_Style_Border::BORDER_THIN,'color'=>array('argb' => 'FFF')))
 );
@@ -148,7 +164,7 @@ $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 if($res == 'YES'){
   $objWriter->save('php://output');
 }else{
-  echo '<script language="javascript">alert("Error, al descargar el archivo.");</script>'; 
+  echo '<script language="javascript">alert("Error, al descargar el archivo.");</script>';
 }
 exit;
 ?>

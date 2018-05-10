@@ -1,9 +1,13 @@
 <?php
-
-$query = "SELECT NameUsers, LastnameUsers FROM users WHERE loginUsers = '".$_SESSION["user"]."' LIMIT 1";
-$result = $con->query($query);
-$nameusers = $result->fetch_array(MYSQLI_BOTH);
-
+//<!-- NAVBAR
+//================================================== -->
+if($_SESSION['user'] == "userAdmin"){
+	$link = '../admin/index.php';
+	$passw = 'Password.php';
+}else{
+	$link = '../user/index.php';
+	$passw = '../admin/Password.php';
+	}
 echo'
 	<nav class="navbar navbar-default navbar-fixed-top topbar">
 		<div class="container-fluid" style="box-shadow: 0px 2px 4px #000;background: #333;">
@@ -24,7 +28,7 @@ echo'
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<label class="bienvenida">
-							<img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle" width="30"> Bienvenido '.$nameusers[0].' '.$nameusers[1].'</label>
+							<img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle" width="30"> Bienvenido '.$_SESSION["user"].'</label>
 					</li>
                     <li><a href="#" class="hvr-bounce-to-top"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a></li>
                     <li><a href="../global/log_out.php" class="hvr-bounce-to-top"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></a></li>
@@ -43,8 +47,7 @@ echo'
 	';
 //Inicio del menu!!
 //La opcion Inicio va estar presente en todos los perfiles!!!
-echo '<li class="active"><a href="'.URL.'admin/" class="hvr-bounce-to-left">
-			<span> <i class="fa fa-dashboard fa-lg"></i> Dashboard</span></a></li>';
+echo '<li class="active"><a href="'.URL.'admin/" class="hvr-bounce-to-left"><span> <i class="fa fa-dashboard fa-lg"></i> Dashboard</span></a></li>';
 
 $objmenu = new Pmenu();
 

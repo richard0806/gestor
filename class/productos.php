@@ -1,4 +1,4 @@
-<?php 
+<?php
 	class Productos{
 
 		public function __construct()
@@ -14,8 +14,12 @@
 			return $this->result;
 		}
 		public function crit_list_prod($con,$idAlm,$at){
+			if ($at == '4') {
+				$query ="SELECT P.id_at, P.id_opret, P.id_prod, P.designacion, P.ref, P.SAP, P.medida, S.cantidad FROM tbl_productos P JOIN tbl_stock S WHERE P.id_prod = S.id_prod AND S.id_alm = {$idAlm} ";
+			}else{
+				$query ="SELECT P.id_at, P.id_opret, P.id_prod, P.designacion, P.ref, P.SAP, P.medida, S.cantidad FROM tbl_productos P JOIN tbl_stock S WHERE P.id_prod = S.id_prod AND S.id_alm = {$idAlm} AND P.id_at = {$at}";
+			}
 			//CASE WHEN salario > 34685 THEN (salario * 0.15) WHEN salario > 52027.41 THEN (salario * 0.20)    WHEN salario >72260.25 THEN (salario * 0.25)    ELSE 0 END
-			$query ="SELECT P.id_opret, P.id_prod, P.designacion, P.ref, P.SAP, P.medida, S.cantidad FROM tbl_productos P JOIN tbl_stock S WHERE P.id_prod = S.id_prod AND S.id_alm = {$idAlm} AND P.id_at = {$at}";
 			$this->result = $this->objDb->select($con,$query);
 
 			return $this->result;
@@ -31,9 +35,6 @@
 			$query = "SELECT cantidad FROM tbl_stock where id_prod = {$id} AND id_alm = {$alm}";
 			$this->result = $this->objDb->select($con,$query);
 
-			if(mysqli_connect_errno()){
-				die("Hubo un problema de consulta" .mysqli_connect_error());
-			}
 			return $this->result;
 		}
 		public function move_prod($con, $id)
@@ -51,15 +52,15 @@
 			switch($move){
 				case 'sal':
 					$query = "UPDATE tbl_stock SET cantidad = cantidad - '{$cant}' WHERE id_prod = '{$id}' AND id_alm = '{$alm}' ";
-					$this->objDb->update($con, $query);	
+					$this->objDb->update($con, $query);
 				break;
 				case 'dev':
 					$query = "UPDATE tbl_stock SET cantidad = cantidad + '{$cant}' WHERE id_prod = '{$id}' AND id_alm = '{$alm}' ";
-					$this->objDb->update($con, $query);	
+					$this->objDb->update($con, $query);
 				break;
 				case 'ent':
 					$query = "UPDATE tbl_stock SET cantidad = cantidad + '{$cant}' WHERE id_prod = '{$id}' AND id_alm = '{$alm}' ";
-					$this->objDb->update($con, $query);	
+					$this->objDb->update($con, $query);
 				break;
 			}
 		}
@@ -94,6 +95,20 @@
 			$this->result = $this->objDb->select($con, $query);
 
 			return $this->result;
+		}
+	}
+
+	class Report{
+		public function __construct()
+		{
+			$this->objDb = new Database();
+		}
+		public function consumos_mensual($con, $inicio, $fin)
+		{
+				$query = "SELECT S.ot, SD.fecha, P.designacion, P.ref, P.medida, SD.cantidad FROM tbl_sdetalles SD, tbl_productos P, tbl_salida S WHERE P.id_prod = SD.id_prod AND SD.id_salida = S.id AND SD.fecha BETWEEN '{$inicio}' AND '{$fin}'";
+
+				$this->result = $this->objDb->select($con,$query);
+				return $this->result;
 		}
 	}
 ?>

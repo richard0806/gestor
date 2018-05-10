@@ -20,15 +20,15 @@
   top: 50px;
 }
 
-.sidebar {
+.sidebar{
     z-index: 1030;
     position: fixed;
-    top: 0px;
+    top: 0px ;
     left: -50px;
     width: 50px;
     height: 100%;
     overflow: overlay;
-    background: #333;
+    background: #333 ;
 	color: #079b9d;
 	-webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -141,7 +141,7 @@ nav.subbar > ul.nav.nav-tabs > li.active > a {
 	}
   .sidebar-nav li.close-toggle a.sidebar-toggle{
     text-align: center;
-  }	
+  }
 	.wrapper.toggled .sidebar-nav li a {
 		text-align: left;
 		padding: 10px 0 10px 10px;
@@ -153,7 +153,7 @@ nav.subbar > ul.nav.nav-tabs > li.active > a {
 
 }
 .badge {
-  background-color: #f70e05; 
+  background-color: #f70e05;
   top: -13px;
   left: 16px;
 }
@@ -417,14 +417,14 @@ nav.subbar > ul.nav.nav-tabs > li.active > a {
 }
 /*SWITCH*/
 .material-switch > input[type="checkbox"] {
-    display: none;   
+    display: none;
 }
 
 .material-switch > label {
     cursor: pointer;
     height: 0px;
-    position: relative; 
-    width: 40px;  
+    position: relative;
+    width: 40px;
 }
 
 .material-switch > label::before {
@@ -487,7 +487,7 @@ tbody td, thead th {
 }
 
 tbody {
-    max-height: 250px; 
+    max-height: 250px;
     height: 250px;      /* Just for the demo          */
     overflow-y: auto;    /* Trigger vertical scroll    */
     overflow-x: hidden;  /* Hide the horizontal scroll */
@@ -616,4 +616,3 @@ tbody {
     }
     }
     /*END LOAD*/
-

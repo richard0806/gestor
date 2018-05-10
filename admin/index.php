@@ -1,20 +1,11 @@
 <?php
-	require'../global/security.php';
-
-	//creación o instanciamiento de un objeto de la Clase Connection
-	$objCon = new Connection();
-	$con = $objCon->get_connected();
+	require'../global/objects.php';
  ?>
  <!DOCTYPE html>
  <html>
  <head>
- 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="icon" href="../css/image/icon.png">
+ 	<?php include_once '../global/header.php' ?>
  	<title>HOME | Gestor Mant.</title>
- 	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/admin.css">
 	<style>
 		.container{
 			padding-top: 50px;
@@ -140,23 +131,29 @@
  </head>
  <body>
 
-	<?php require'../global/menu.php'; ?>
+	<?php include_once '../global/menu.php'; ?>
 
 	<div class="container">
-			<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+				<?php //Validar los permisos del Usuarios.
+				if(in_array('21',$_SESSION['roles'])){
+				?>
+						<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                 <div class="card card-inverse card-info">
-                    <img class="card-img-top" src="../css/image/entradas.png">
-                    <div class="card-block">
-                        <h4 class="card-title">Entradas</h4>
-                        <div class="card-text">
-                            Entradas de productos.
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="<?= URL.'admin/entrada.php'?>" class="btn btn-primary pull-right btn-sm">Entrar</a>
-                    </div>
+                  <img class="card-img-top" src="../css/image/entradas.png">
+                  <div class="card-block">
+                  	<h4 class="card-title">Entradas</h4>
+                      <div class="card-text">
+                          Entradas de productos.
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                      <a href="<?= URL.'admin/entrada.php'?>" class="btn btn-primary pull-right btn-sm">Entrar</a>
+                  </div>
                 </div>
             </div>
+						<?php
+					}if(in_array('11',$_SESSION['roles'])){
+						?>
             <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                 <div class="card card-inverse card-info">
                     <img class="card-img-top" src="../css/image/salidas.png">
@@ -171,6 +168,9 @@
                     </div>
                 </div>
             </div>
+						<?php
+					} if(in_array('19',$_SESSION['roles'])){
+						?>
 						<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
 								<div class="card card-inverse card-info">
 										<img class="card-img-top" src="../css/image/nc.png">
@@ -185,7 +185,10 @@
 										</div>
 								</div>
 						</div>
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+						<?php
+					}if(in_array('24',$_SESSION['roles'])){
+						?>
+						<div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                 <div class="card card-inverse card-info">
                     <img class="card-img-top" src="../css/image/transfer.png">
                     <div class="card-block">
@@ -199,6 +202,9 @@
                     </div>
                 </div>
             </div>
+						<?php
+					}if(in_array('23',$_SESSION['roles'])){
+						?>
              <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                 <div class="card card-inverse card-info">
                     <img class="card-img-top" src="../css/image/reportes.png">
@@ -213,18 +219,28 @@
                     </div>
                 </div>
             </div>
+						<?php
+					}if(in_array('15',$_SESSION['roles'])){
+						?>
+						 <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+								<div class="card card-inverse card-info">
+										<img class="card-img-top" src="../css/image/averias.png">
+										<div class="card-block">
+												<h4 class="card-title">Averias</h4>
+												<div class="card-text">
+														Averias de productos activos.
+												</div>
+										</div>
+										<div class="card-footer">
+												<a href="<?= URL.'admin/averias.php'?>" class="btn btn-primary pull-right btn-sm">Entrar</a>
+										</div>
+								</div>
+						</div>
+						<?php
+					}
+						?>
 	</div>
 
- <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$(document).on("click",".sidebar-toggle",function(event){
-			event.preventDefault();
-		    $(".wrapper").toggleClass("toggled");
-		});
-	});
-</script>
 
  </body>
  </html>

@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale= 1,user-scalable=no">
  	<link rel="icon" href="css/image/icon.png">
-	<title>Buscador | Gestor Mant.</title>	
+	<title>Buscador | Gestor Mant.</title>
 	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" href="css/ihover/src/ihover.css">
 	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link rel="stylesheet" href="css/main.css">	
+	<link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
@@ -32,7 +32,7 @@
                     	<a href="#" class="btn-search"><i class="fa fa-search fa-lg" aria-hidden="true"></i></a>
                 	</label>
 				</p>
-				
+
 			</div>
 
 			<div class="navbar-collapse collapse" id="navbar-collapse-main">
@@ -57,31 +57,31 @@
 						</select>
 						<input type="text" class="form-control" id="txtvalor">
 						<a id="StockExcel" data-modal="#modal3" class="modal__trigger"><img src="css/image/reportExcel.png"></a>
-				</div>									
+				</div>
 			</form>
-		</div>		
+		</div>
 	</div>
 
-	<article class="wrapper">	    
-	    <aside class="sidebar">
+	<article class="wrapper">
+	    <!-- <aside class="sidebar">
 	        <ul class="sidebar-nav">
 	        	<li class="close-toggle">
 	        		<a href="#" class="sidebar-toggle"><span><i class="fa fa-times fa-2x" aria-hidden="true"></i></span>
-                    </a>
-                </li>
-			    <li><a href="#dashboard" data-toggle="tab" class="hvr-bounce-to-left"><span> HOME</span></a></li>
-		    </ul>
-	    </aside>
+	                        </a>
+	                    </li>
+	    			    <li><a href="#dashboard" data-toggle="tab" class="hvr-bounce-to-left"><span> HOME</span></a></li>
+	    		    </ul>
+	    </aside> -->
 		<div class="loading" style="display:none;">
 			<div class="load">
 				<img src="css/image/load.gif" alt="cargando">
 				<h3>Cargando</h3>
 				<h5>Espero un minuto, estamos procesando la informacion</h5>
-			</div>			
-		</div>		
+			</div>
+		</div>
 	</article>
 
-	<div class="container container1" style="margin-top:130px; max-width: 1300px;">	
+	<div class="container container1" style="margin-top:130px; max-width: 1300px;">
 			<table class="table table-bordered table-condensed table-hover table-responsive scroll table-fixed" id="myTablequery">
 				<thead bgcolor="#CCCCCC" style="font-size:12;font-family:Arial, Helvetica, sans-serif">
 				<tr style="font-size:12px;">
@@ -98,7 +98,7 @@
 		        </tr>
 	        	</thead>
 	        	<tbody style="font-size:12px;">
-	        		
+
 	        	</tbody>
         	</table>
         	<div class="nota-informativa"></div>
@@ -114,42 +114,42 @@
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal">×</button>
 		        <h4 class="modal-title"><i class="fa fa-edit fa-1x"></i> Modificar</h4>
-		      </div> 		      
+		      </div>
 		      <div class="modal-body">
-		      	<form action="" id="keyword" class="form-horizontal">		       
+		      	<form action="" id="keyword" class="form-horizontal">
 		        	<div class="form-group">
 		        		<label for="" class="col-sm-1 control-label" style="margin-bottom: 0px; padding-bottom: 1px;"> ID</label><br>
 		        		<div class="col-sm-12">
-		        			<input type="text" name="txtID" readonly="" class="form-control input-sm">	       			
+		        			<input type="text" name="txtID" readonly="" class="form-control input-sm">
 		        		</div>
 					</div>
 					<div class="form-group">
 		        		<label for="" class="col-sm-6 control-label" style="margin-bottom: 0px; padding-bottom: 1px;"> Palabra Clave</label><br>
 		        		<div class="col-sm-12">
-		        			<input type="text" name="txtkeyword" placeholder="Introduzca la Palabra aqui" class="form-control input-sm" autofocus="">		        			
+		        			<input type="text" name="txtkeyword" placeholder="Introduzca la Palabra aqui" class="form-control input-sm" autofocus="">
 		        		</div>
 		        	</div>
 		        	<br><br>
 		        	<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 		        	<button type="submit" class="btn btn-danger">Modificar</button>
 
-		        </form>		        
+		        </form>
 		      </div>
-		      
+
 		      <div id="loading-02" style="display: none; text-align: center;">
-		      			
+
 		      </div>
 		    </div>
 
 		  </div>
 		</div>
-		
+
 	<nav class="social hidden">
           <ul>
               <li><a href="#">Solicitar <i class="fa fa-share"></i></a></li>
           </ul>
       </nav>
-		<?php require'global/load.php'; ?>
+		<?php require 'global/load.php'; ?>
 	<!--MODALS-->
 	<div id="modal3" class="modal modal3 modal__bg" role="dialog" aria-hidden="true">
 		<div class="modal__dialog">
@@ -161,25 +161,26 @@
 				    	<select class="form-control" name="reportAt" id="at" style="width: 100%">
 					    	<option value="">Seleccionar</option>
 					    	<option value="1">CAT</option>
-							<option value="2">SEN</option>
-							<option value="3">ELE</option>
-					    </select>				    
+								<option value="2">SEN</option>
+								<option value="3">ELE</option>
+								<option value="4">ALL</option>
+					    </select>
 				  </div>
-				  <button type="button" id='enviarReporte' class="btn btn-default">Descargar</button>				
+				  <button type="button" id='enviarReporte' class="btn btn-default">Descargar</button>
 				</form>
-				
+
 				<!-- modal close button -->
 				<a href="" class="modal__close demo-close">
 					<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/><path d="M0 0h24v24h-24z" fill="none"/></svg>
 				</a>
 			</div>
 		</div>
-	</div>	
+	</div>
 
 
 <!--SCRIPT-->
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script> 
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <script type="text/javascript" src="colresizable/colResizable-1.6.min.js"></script>
 <script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/search.js"></script>

@@ -177,7 +177,7 @@ nav.subbar > ul.nav.nav-tabs > li.active > a {
 	.wrapper.toggled .sidebar, .wrapper.toggled .sidebar-nav {
 		width: 200px;
 	}
-	
+
 	.wrapper.toggled .sidebar-nav li a {
 		/*text-align: left;*/
 		padding: 10px 0 10px 10px;
@@ -191,13 +191,14 @@ nav.subbar > ul.nav.nav-tabs > li.active > a {
 
 /*SEARCH*/
 .form-search{
-    background: #1a4a72;
+    background: linear-gradient( #1a4a72, #FFF); /* #1a4a72; */
     top: 60px;
     height: 60px;
     position: fixed;
     width: 100%;
     color: #fff;
     display: none;
+		border-bottom:none;
 }
 .form-search form h3{
     display: inline-block;
@@ -247,7 +248,7 @@ table.scroll {
 table.scroll tbody,
 table.scroll thead { display: inline-block; }
 
-table.scroll thead tr th { 
+table.scroll thead tr th {
     height: 30px;
     line-height: 30px;
     /*text-align: left;*/

@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require'../class/sessions.php';
 	$objses = new Sessions();
 	$objses->init();
@@ -11,9 +11,4 @@
 
 	date_default_timezone_set("America/Santo_Domingo");
 	$now = date("Y") . "-" . date("m") . "-" . date("d");
-
-	require '../class/conex.php';
-	require '../class/dbactions.php';
-	require '../global/constants.php';
-	require '../class/Pmenu.php';
 ?>

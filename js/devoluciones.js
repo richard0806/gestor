@@ -5,7 +5,7 @@ $(function() {
       		event.preventDefault();
       	});
 
-	$('.inputedit').attr('disabled', true);	
+	$('.inputedit').attr('disabled', true);
 		fn_dar_eliminar();
 		fn_cantidad();
 
@@ -13,18 +13,13 @@ $(function() {
 			var height = $(window).height() - 200;
 			$(this).find(".modal-body").css("max-height", height);
 		});
-		
+
 
 		$('.cargar').attr('disabled', 'disabled');
 		$('.listar').attr('disabled', 'disabled');
 		$('.btn-add').attr('disabled', 'disabled');
 		$('#txtid').attr('disabled', 'disabled');
 		$('#txtcant').attr('disabled', 'disabled');
-
-		$(document).on("click",".sidebar-toggle",function(event){
-			event.preventDefault();
-		    $(".wrapper").toggleClass("toggled");
-		});
 
 		$('#txtalmacen').change(function(){
 			$(this).closest('.form-group').removeClass('has-error');
@@ -53,10 +48,10 @@ $(function() {
 				$(this).closest('.form-group').addClass('has-error');
 				$('.cargar').attr('disabled', 'disabled');
 				$('.listar').attr('disabled', 'disabled');
-				$('#txtid').attr('disabled', 'disabled');				
+				$('#txtid').attr('disabled', 'disabled');
 			}
 
-									
+
 		});
 
 		$('input[name="txtid"]').on('keyup', function() {
@@ -68,7 +63,7 @@ $(function() {
 				$('.cargar').attr('disabled', 'disabled');
 				$('#txtcant').attr('disabled', 'disabled');
 			}
-		});	
+		});
 
 		$('#txtcant').on('keyup', function() {
 			//console.log('hola mundo.')
@@ -132,13 +127,13 @@ $(function() {
 					{
 						$('.validate').addClass('has-error');
 						$( ".nota-informativa" ).css('background-color', '#C00');
-			  			$( ".nota-informativa" ).html(response.mensaje);			  					
+			  			$( ".nota-informativa" ).html(response.mensaje);
 			  			$( ".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 									            .delay(2500)
 									            .hide( "blind", { direction:'down' }, 1000 );
-			  			
+
 					}
-					
+
 				}
 			});
 		});
@@ -154,7 +149,7 @@ $(function() {
 		// Set the width of thead columns
 		$table.find('thead tr').children().each(function(i, v) {
 		    $(v).width(colWidth[i]);
-		});  
+		});
 
 		items = 0;
 
@@ -164,7 +159,7 @@ $(function() {
 		            event.preventDefault();
 		            if($('#txtcant').focus()){
 		            	$('.btn-add').trigger('click');
-		            }	           	
+		            }
 		        }
 		    }
 
@@ -172,7 +167,7 @@ $(function() {
 	            event.preventDefault();
 	            if($('#txtid').focus()){
 	            	$('.cargar').trigger('click');
-	            }           	
+	            }
 	        }
 	     });
 
@@ -203,36 +198,36 @@ $(function() {
 				campo.parents('.form-group').addClass('has-error');
 				campo.focus();
 				$(".nota-informativa" ).css('background-color', '#C00');
-			  	$(".nota-informativa" ).html('<p>Existen Campos vacio.</p>');			  					
+			  	$(".nota-informativa" ).html('<p>Existen Campos vacio.</p>');
 			  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 									            .delay(2500)
 									            .hide( "blind", { direction:'down' }, 1000 );
 
-			}else{		
+			}else{
 
 				if(cantidad <= 0){
 					$(".nota-informativa" ).empty();
 					$('#txtcant').parents('.form-group').addClass('has-error');
 					$('#txtcant').focus();
 					$(".nota-informativa" ).css('background-color', '#C00');
-				  	$(".nota-informativa" ).html('<p>No es posible solicitar esta cantidad.</p>');			  					
+				  	$(".nota-informativa" ).html('<p>No es posible hacer una Nota de Crédito con esta cantidad.</p>');
 				  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 										            .delay(2500)
 										            .hide( "blind", { direction:'down' }, 1000 );
 					return false;
 				}
 
-				if(parseFloat(stock) < cantidad){
+				/*if(parseFloat(stock) < cantidad){
 					$(".nota-informativa" ).empty();
 					$('#txtcant').parents('.form-group').addClass('has-error');
 					$('#txtcant').focus();
 					$(".nota-informativa" ).css('background-color', '#C00');
-				  	$(".nota-informativa" ).html('<p>La cantidad solicitada sobrepasa el total del producto.</p>');			  					
+				  	$(".nota-informativa" ).html('<p>La cantidad solicitada sobrepasa el total del producto.</p>');
 				  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 										            .delay(2500)
 										            .hide( "blind", { direction:'down' }, 1000 );
 					return false;
-				}
+				}*/
 
 				$('#txtcant').closest('.form-group').removeClass('has-error');
 				$('#txtid').closest('.form-group').removeClass('has-error');
@@ -272,28 +267,28 @@ $(function() {
 				setTimeout(function(){
 
 					$('#badgecant').css("transform","scale(1)");
-					$('#badgecant').css("-webkit-transform","scale(1)");			
+					$('#badgecant').css("-webkit-transform","scale(1)");
 					$('#txtid').focus();
-				},500);			 
-				
+				},500);
+
 			}
 		});
 /*************************************************************************/
 			function fn_dar_eliminar(){
                 $("a.eliminar").on('click',function(event){
                 	event.preventDefault();
-                	//alert('haz hecho click aqui!')	;				
+                	//alert('haz hecho click aqui!')	;
                     Item = $(this).parents("tr").find("td").eq(0).html();
-					var parent = $(this).parents('tr').get(0);	
+					var parent = $(this).parents('tr').get(0);
 					$(".nota-informativa" ).css('background-color', '#00C851');
-				  	$(".nota-informativa" ).html('<p>El registros en la posicion No. '+ Item +' ha sido eliminado.</p>');			  					
+				  	$(".nota-informativa" ).html('<p>El registros en la posicion No. '+ Item +' ha sido eliminado.</p>');
 				  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 										            .delay(2500)
 										            .hide( "blind", { direction:'down' }, 1000 );
 					$(parent).remove();
 					$('#txtid').focus();
 					fn_cantidad();
-					
+
 
                 });
             }
@@ -304,7 +299,7 @@ $(function() {
 				$('#badgecant').html(cant0).fadeIn('slow');
 			}
 /**************************************************************************/
-	
+
 		/*CHANGE TIPO SALIDA
 		$('select[name="txtTipoSalida"]').change(function() {
 			//console.log('hola mundo');
@@ -327,7 +322,7 @@ $(function() {
 		    	$('#Ot').prop('readonly', false);
 		    	$('#Ot').val('');
 
-		    }	    
+		    }
 
 		});*/
 /***************************************************************************/
@@ -368,12 +363,12 @@ $(function() {
 		$('.input-group').find('.glyphicon-calendar').on('click', function(){
 			if( !date_input.data('datepicker').picker.is(":visible"))
 			{
-			       date_input.trigger('focus');  
+			       date_input.trigger('focus');
 			}
 		});
 /*******************************************************************/
 //ENVIAR EL FORMULARIO Y LOS DATOS AL PRESIONAR F2......
-    $(document).keydown(function(event) {    	
+    $(document).keydown(function(event) {
         if(event.which == 114 ) { //F3
             //alert("Has presionado F3");
 			$('#submit').trigger('click');
@@ -387,13 +382,13 @@ $(function() {
 				AT=$('select[name=txtAt]').val();
 				OT=$('#Ot').val();
 				fecha=$('input[name=txtDate]').val();
-				
+
 			//Comprobamos y mostramos diferentes clases
 				if (AT == ''){
 					$('select[name=txtAt]').parents().parents().children('label:eq(0)').empty();
 					$('select[name=txtAt]').parents().parents().children('label:eq(0)').text('AT');
 					$('select[name=txtAt]').parents().parents().children('label:eq(0)').append(' <i class="fa fa-exclamation-circle" style="color:#f70e05;" aria-hidden="true"></i>');
-					
+
 				}else{
 					$('select[name=txtAt]').parents().parents().children('label:eq(0)').empty();
 					$('select[name=txtAt]').parents().parents().children('label:eq(0)').text('AT');
@@ -402,7 +397,7 @@ $(function() {
 					$('#Ot').parents().parents().children('label:eq(1)').empty();
 					$('#Ot').parents().parents().children('label:eq(1)').text('OT No.');
 					$('#Ot').parents().parents().children('label:eq(1)').append(' <i class="fa fa-exclamation-circle" style="color:#f70e05;" aria-hidden="true"></i>');
-					
+
 				}else{
 					$('#Ot').parents().parents().children('label:eq(1)').empty();
 					$('#Ot').parents().parents().children('label:eq(1)').text('OT NO.');
@@ -411,7 +406,7 @@ $(function() {
 					$('input[name=txtDate]').parents().parents().children('label:eq(2)').empty();
 					$('input[name=txtDate]').parents().parents().children('label:eq(2)').text('fecha');
 					$('input[name=txtDate]').parents().parents().children('label:eq(2)').append(' <i class="fa fa-exclamation-circle" style="color:#f70e05;" aria-hidden="true"></i>');
-					
+
 				}else{
 					$('input[name=txtDate]').parents().parents().children('label:eq(2)').empty();
 					$('input[name=txtDate]').parents().parents().children('label:eq(2)').text('fecha');
@@ -420,28 +415,28 @@ $(function() {
 				if (AT =='' || OT == '' || fecha == ''){
 					$(".nota-informativa" ).empty();
 					$(".nota-informativa" ).css('background-color', '#C00');
-				  	$(".nota-informativa" ).html('<p>Existen campos vacios.</p>');			  					
+				  	$(".nota-informativa" ).html('<p>Existen campos vacios.</p>');
 				  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 										            .delay(2500)
 										            .hide( "blind", { direction:'down' }, 1000 );
 					//return false;
 				}else{
-					fn_dar_enviar();					
+					fn_dar_enviar();
 				}
-	
+
 		});
 		function fn_dar_enviar(){
 			var DATA 	= [];
 			if ($('#tableDetalles >tbody >tr').length == 0){
 					$(".nota-informativa" ).empty();
 					$(".nota-informativa" ).css('background-color', '#C00');
-				  	$(".nota-informativa" ).html('<p>No existen Items a solicitar.</p>');			  					
+				  	$(".nota-informativa" ).html('<p>No existen Items a solicitar.</p>');
 				  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 										            .delay(2500)
 										            .hide( "blind", { direction:'down' }, 1000 );
 				return false;
-					
-			}else{				
+
+			}else{
 			//RECORREMOS LA TABLA DE DETALLES PARA GUARDAR EN VARIABLES SUS DATOS.
 			$("#tableDetalles tbody tr").each(function (index){
 			var campo1, campo2, campo3;
@@ -458,7 +453,7 @@ $(function() {
 					break;
 				}
 			});//final each para index2
-			
+
 			//entonces declaramos un array para guardar estos datos, lo declaramos dentro del each para así reemplazarlo y cada vez
 			item = {};
 			//si miramos el HTML vamos a ver un par de TR vacios y otros con el titulo de la tabla, por lo que le decimos a la función que solo se ejecute y guarde estos datos cuando exista la variable ID, si no la tiene entonces que no anexe esos datos.
@@ -475,44 +470,44 @@ $(function() {
 			//eventualmente se lo vamos a enviar por PHP por ajax de una forma bastante simple y además convertiremos el array en json para evitar cualquier incidente con compativilidades.
 				var INFO 	= new FormData();
 				aInfo 	= JSON.stringify(DATA);
-				
+
 				INFO.append('data', aInfo);
 				//INFO.append('TipoFactura', $('#txtTipoSalida').val());
 				INFO.append('AT', $('select[name="txtAt"]').val());
 				INFO.append('OT', $('#type').val()+' '+$('#Ot').val());
 				INFO.append('fecha', $('input[name="txtDate"]').val());
 				INFO.append('fila', fila);
-			
+
 			//var valores = (aInfo).serializeArray();
 			//alert(variables);
-			
-						$.ajax({							
+
+						$.ajax({
 							type:'POST',//TIPO DE PETICION PUEDE SER GET
 							dataType:"json",//EL TIPO DE DATO QUE DEVUELVE PUEDE SER JSON/TEXT/HTML/XML
-							url:"devoluciones_exe.php",//DIRECCION DONDE SE ENCUENTRA LA OPERACION A REALIZAR  
-							data:INFO,							
+							url:"devoluciones_exe.php",//DIRECCION DONDE SE ENCUENTRA LA OPERACION A REALIZAR
+							data:INFO,
 							cache: false,
-							processData: false, 
+							processData: false,
 							contentType: false,
 							statusCode: {
 							    404: function() {
 							      window.location = '../global/404error.php';
 							    }
 							},
-		
-							beforeSend: function(){	
+
+							beforeSend: function(){
 								$('#loader').show();
-								$('.input-edit').prop('readonly', true);							 	 
+								$('.input-edit').prop('readonly', true);
 							},
-								
+
 							  success: function(response){//ACCION QUE SUCEDE DESPUES DE REALIZAR CORRECTAMENTE LA PETCION EL CUAL NOS TRAE UNA RESPUESTA
 									//response = parseJSON(response);
-									if(response.respuesta == 'DONE'){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE		
+									if(response.respuesta == 'DONE'){//MANDAMOS EL MENSAJE QUE NOS DEVUELVE EL RESPONSE
 										//console.log(response.mensaje);
 										$(".nota-informativa" ).empty();
 										$(".nota-informativa" ).css('background-color', '#07f124');
 										$(".nota-informativa").css('box-shadow', '0 16px 26px -10px rgba(13, 212, 28, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.05), 0 8px 10px -5px rgba(83, 244, 54, 0.2)');
-									  	$(".nota-informativa" ).html('<p>'+response.mensaje+'.</p>');			  					
+									  	$(".nota-informativa" ).html('<p>'+response.mensaje+'.</p>');
 									  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 															   .delay(2500)
 															   .hide( "blind", { direction:'down' }, 1000 );
@@ -524,24 +519,24 @@ $(function() {
 										setTimeout(function(){
 											window.location = 'devolucion.php';
 										},500);
-									
+
 									}else{
 										//alert(response.mensaje);
 										$(".nota-informativa" ).empty();
 										$(".nota-informativa" ).css('background-color', '#f44336');
 										$(".nota-informativa").css('box-shadow', '0 16px 26px -10px rgba(244, 67, 54, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(244, 67, 54, 0.2)');
-									  	$(".nota-informativa" ).html('<p>'+response.mensaje+'.</p>');			  					
+									  	$(".nota-informativa" ).html('<p>'+response.mensaje+'.</p>');
 									  	$(".nota-informativa" ).show( "blind", { direction:'down' }, 1000 )
 															   .delay(2500)
 															   .hide( "blind", { direction:'down' }, 1000 );
 										$('#loader').hide();
 									}
-									
+
 							  }
-						});//final ajax	
-			
+						});//final ajax
+
 		}//final del else
-		
+
 	};//function enviar();
 /*************************************************************************************************/
-});		
+});

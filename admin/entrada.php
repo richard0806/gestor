@@ -1,50 +1,21 @@
-﻿<?php
-require'../global/security.php';
-require'../class/almacen.php';
-require'../class/productos.php';
+﻿<?php require '../global/objects.php';?>
 
-$objcon = new Connection();
-$con = $objcon->get_connected();
-
-
-
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../cssalmacen/img/carrito.png">
-    <meta name="description" content="Gestor de Mantenimiento Siemens MSD">
-    <meta name="author" content="RMSoluciones">
+		<?php include_once '../global/header.php' ?>
 		<title>Entradas-Almacen Siemens</title>
-		<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../css/admin.css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
 		<style>
 			.container h3{
 				display: inline;
 			}
 		</style>
 
-		<!--/SCRIPT/-->
-		<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-		<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../jquery-uitablefilter-master/jquery.uitablefilter.js"></script>
-		<script type="text/javascript" src="../js/permitir_caracter.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.tr.min.js"></script>
-		<script src="../js/moment.min.js"></script>
-		<script type="text/javascript" src="../js/devoluciones.js"></script>
-
     </head>
 
 
 	<body>
-		<?php require'../global/menu.php' ?>
+		<?php require '../global/menu.php' ?>
 		<article class="container" style="padding-top:50px;" id="accordion">
 			<h3>Formularios de Entrada</h3>
 			<?php
@@ -63,11 +34,7 @@ Crear Nuevo Producto</button>
 		</div>
 
         <div class="despacho">
-        	<h2><u>Nueva Entrada</u></h2>
-
-
             <br>
-            <br><br>
         <!--CONTENEDOR DE LOS MENSAJES DE ERROR Y EXITO-->
 
                 <div id="mensaje"></div>
@@ -81,10 +48,10 @@ Crear Nuevo Producto</button>
                 	<select id="Almacen32" name="Almacen32" class="form-control" required >
                     	<option value="0" selected>Seleccionar...</option>
                         <option value="1">Almacen Mantenimiento</option>
-						<option value="2">Almacen Sobrante</option>
-						<option value="3">Almacen Eurodom</option>
-						<option value="4">Almacen Sobt. Mant</option>
-						<option value="5">No Comforme</option>
+												<option value="2">Almacen Sobrante</option>
+												<option value="3">Almacen Eurodom</option>
+												<option value="4">Almacen Sobt. Mant</option>
+												<option value="5">No Comforme</option>
                     </select>
                	 </div>
                  <label for="id_producto" class="col-sm-2 control-label">ID Producto</label>
@@ -407,21 +374,16 @@ Crear Nuevo Producto</button>
     <!--=====================FINAL DE LA PROGRAM. MODAL==================-->
 
     <!--cadena de comando para los script de la pagina principal-->
-    <script src="../jsalmacen/jquery-2.1.3.min.js"></script>
-	<script src="../../bootstrap-3.3.1/dist/js/bootstrap.min.js"></script>
-	<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/v4.0.0/src/js/bootstrap-datetimepicker.js"></script>
-    <script src="../jsalmacen/offcanvas.js"></script>
-    <script src="../jsalmacen/entrada.js"></script>
-    <script src="../jsalmacen/new_entrada.js"></script>
-    <script src="../global/permitir_caracter.js"></script>
-    <script src="../jsalmacen/new_producto_exe.js"></script>
+    <script src="../js/entrada.js"></script>
+    <script src="../js/new_entrada.js"></script>
+    <script src="../js/new_producto_exe.js"></script>
     <script src="../global/loader.js"></script>
-<script src="../jsalmacen/Alert/sweetalert.min.js"></script>
+<script src="../js/Alert/sweetalert.min.js"></script>
     <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
+      $(function () {
+        $('#datetimepicker1').datetimepicker();
 				$('#datetimepicker2').datetimepicker();
 
 				$('#guardarmodal').click(function(){

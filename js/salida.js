@@ -21,11 +21,6 @@ $(function() {
 		$('#txtid').attr('disabled', 'disabled');
 		$('#txtcant').attr('disabled', 'disabled');
 
-		$(document).on("click",".sidebar-toggle",function(event){
-			event.preventDefault();
-		    $(".wrapper").toggleClass("toggled");
-		});
-
 		$('#txtalmacen').change(function(){
 			$(this).closest('.form-group').removeClass('has-error');
 			if($(this).val() != ''){

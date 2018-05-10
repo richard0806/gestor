@@ -12,7 +12,7 @@ $hoy = date("Y-m-d");
 $consulta_visita_real = "SELECT * FROM visitas WHERE fecha='$hoy'"; /*AND ip='".$_SERVER['REMOTE_ADDR']."'";*/
 $rs_visita_real = $con->query($consulta_visita_real);
 
-if ($rs_visita_real->num_rows == 0) {   
+if ($rs_visita_real->num_rows == 0) {
    $insert_real = "INSERT INTO visitas (ip, fecha, num) VALUES ('".$_SERVER['REMOTE_ADDR']."', '$hoy', 1)";
    $con->query($insert_real);
 }else{

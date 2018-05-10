@@ -1,11 +1,5 @@
 <?php
-	require'../global/security.php';
-	require'../class/almacen.php';
-	require'../class/productos.php';
-
-	//creación o instanciamiento de un objeto de la Clase Connection
-	$objCon = new Connection();
-	$con = $objCon->get_connected();
+	include_once '../global/objects.php';
 
 	$objAlm = new Almacen();
 	$objProd = new Productos();
@@ -14,28 +8,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="icon" href="../css/image/icon.png">
+	<?php include_once '../global/header.php' ?>
 	<title>NC | GMant.</title>
-	<!--/CSS/-->
-	<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/admin.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
-
 	<!--/SCRIPT/-->
-	<script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-	<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../jquery-uitablefilter-master/jquery.uitablefilter.js"></script>
-	<script type="text/javascript" src="../js/permitir_caracter.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.tr.min.js"></script>
-	<script src="../js/moment.min.js"></script>
 	<script type="text/javascript" src="../js/devoluciones.js"></script>
-
-
 	<style>
 		form label{
 			display: block;
@@ -76,7 +55,7 @@
 	</style>
 </head>
 <body>
-	<?php require'../global/menu.php' ?>
+	<?php include_once '../global/menu.php' ?>
 	<article class="container" style="padding-top:50px;" id="accordion">
 				<h3>Formularios de Nota de Crédito</h3>
 				<hr style="border-color: #333;width: 100%">
